@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    password:  user1!
+    username: user1
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/merci?serverTimezone=Asia/Seoul
