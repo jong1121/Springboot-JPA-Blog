@@ -10,16 +10,35 @@
 
     </body>
     <script>
-        let respone;
-        function ajax_test(){
+
+        function ajax_join(username, password, email){
             fetch("/blog/dummy/join", {
                 method: "POST",
                 cache: 'no-cache',
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body :  'username=test&password=1234&email=test@test.com'
-            }).then((response) => respone=response)
+                body :  'username='+username+'&password='+password+'&email='+email
+            }).then((response) => console.log(response))
         }
+
+        function ajax_update (userId, password, email) {
+
+            fetch("/blog/dummy/user/"+userId , {
+                method: "PUT",
+                cache: "no-cache",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "userId" : userId,
+                    "password": password,
+                    "email": email,
+                })
+                }).then((response) => console.log(response))
+            }
+
+
+
     </script>
 </html>

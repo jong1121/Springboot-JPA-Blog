@@ -22,7 +22,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create  #create 프로젝트실행시 무조건 신규 생성, update 추 가
+      ddl-auto: update  #create 프로젝트실행시 무조건 신규 생성, update 추 가
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  #엔티티 생성시 변수명 그대로
       use-new-id-generator-mappings: false  #jpa 넘버링 전략 미준수
