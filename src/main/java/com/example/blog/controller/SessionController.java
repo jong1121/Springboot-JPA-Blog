@@ -46,6 +46,7 @@ public class SessionController {
         return "addData OK!!";
     }
 
+
     @ResponseBody
     @PostMapping("/Session/deleteData.do")
     public String deleteData(HttpServletRequest request
@@ -62,3 +63,5 @@ public class SessionController {
         return "removeSession OK!!";
     }
 }
+
+
