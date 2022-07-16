@@ -33,7 +33,7 @@
     function addData () {
         let key  = document.querySelector('#inkey').value;
         let value = document.querySelector('#invalue').value;
-        fetch("/blog/Session/addData.do" , {
+        fetch("/Session/addData.do" , {
             method: "Post",
             cache: "no-cache",
             headers: {
@@ -50,7 +50,7 @@
     function deleteData () {
         let key  = document.querySelector('#inkey').value;
 
-        fetch("/blog/Session/deleteData.do" , {
+        fetch("/Session/deleteData.do" , {
             method: "Post",
             cache: "no-cache",
             headers: {
@@ -66,7 +66,7 @@
 
     function removeSession () {
 
-        fetch("/blog/Session/removeSession.do" , {
+        fetch("/Session/removeSession.do" , {
             method: "Post",
             cache: "no-cache",
             headers: {

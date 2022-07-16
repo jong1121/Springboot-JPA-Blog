@@ -1,17 +1,20 @@
-#테이블 코멘트 추가
-alter table USER COMMENT ='사용자';
-#테이블 코멘트 조회
- select table_name
-,table_comment
-from information_schema.tables
-where 1=1
-and TABLE_SCHEMA ='merci'
-and table_name = 'USER';
-#컬럼 코멘트 조회
-select table_name
-,column_name
-,column_comment
-from information_schema.COLUMNS
-where 1=1
- and table_schema = 'merci'
-and  table_name ='TEST1T';
+-- 테이블 코멘트 수정
+COMMENT ON TABLE TEST1M IS '테스트테이블1';
+-- 테이블 컬럼 코멘트 수정
+COMMENT ON COLUMN TEST1M.NUM IS '순번';
+--  테이블 정보 조회
+SELECT T1.TABLE_NAME
+,T1.COMMENTS
+,T3.COLUMN_NAME
+,T4.COMMENTS
+FROM ALL_TAB_COMMENTS T1 --테이블 코멘트
+--INNER JOIN ALL_TABLES T2 ON T1.TABLE_NAME = T2.TABLE_NAME -- TABLE INFO
+INNER JOIN ALL_TAB_COLUMNS T3 ON T1.TABLE_NAME = T3.TABLE_NAME -- COLUMN INFO
+INNER JOIN ALL_COL_COMMENTS T4 ON T1.TABLE_NAME = T4.TABLE_NAME -- COLUMN COMMENTS
+WHERE T1.TABLE_NAME = 'TEST1M';
+
+-- SYNONYM 조회
+SELECT * FROM ALL_SYNONYMS;
+-- INDEX 
+SELECT *
+FROM ALL_IND_COLUMNS;

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -17,10 +16,10 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @DynamicInsert  // insert 시 null는 파라미터 제외하여 DB의 Default 처리
-public class User {
+public class UserM {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  //프로젝트에서 연결된 DB의 넘버링 전략을 따라감
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)  //프로젝트에서 연결된 DB의 넘버링 전략을 따라감
     private int id; // 시퀀스 , auto_increment
 
    @Column(nullable = false, length = 30)

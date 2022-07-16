@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 public class Reply {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private int id;
 
     @Column(nullable = false, length = 200)
@@ -29,7 +29,7 @@ public class Reply {
 
     @ManyToOne
     @JoinColumn(name="userId")
-    private User user;
+    private UserM userM;
 
     @CreationTimestamp
     private Timestamp createDate;
