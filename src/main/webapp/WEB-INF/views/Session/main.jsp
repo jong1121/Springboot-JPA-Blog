@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,54 +28,77 @@
     </c:forEach>
 </table>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script>
 
-    function addData () {
-        let key  = document.querySelector('#inkey').value;
+    function addData() {
+        let key = document.querySelector('#inkey').value;
         let value = document.querySelector('#invalue').value;
-        fetch("/Session/addData.do" , {
-            method: "Post",
-            cache: "no-cache",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                "key" : key,
-                "value": value,
-            })
-        }).then((response) => console.log(response))
+        $.ajax({
+            type: 'POST',
+            url: '/Session/addData.do',
+            data: JSON.stringify({
+                'key': key,
+                'value': value,
+            }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json'
+        }).done(function (response) {
+            console.log('doen');
+            console.log(response);
+        }).fail(function (error) {
+            console.log('fail');
+            console.log(JSON.stringify(error));
+        });
+
     }
 
+    /*
+    ajax 는 jquery 라이브러리가 필요하지만 성공 실패 값 출력
+    fetch는 라이브러리가 필요 없지만 에러시 json변환이 안되어 Network response 별도 확인필요
+     */
 
-    function deleteData () {
-        let key  = document.querySelector('#inkey').value;
+    function deleteData() {
+        let key = document.querySelector('#inkey').value;
+        fetch("/Session/deleteData.do", {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+                "key": key,
 
-        fetch("/Session/deleteData.do" , {
+            })
+        }).then((response) => response.json())
+            .then((data) => {
+                console.log('then');
+                console.log(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+
+
+
+    };
+
+
+    function removeSession() {
+
+        fetch("/Session/removeSession.do", {
             method: "Post",
             cache: "no-cache",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json; charset=utf-8",
             },
-            body: JSON.stringify({
-                "key" : key,
-
-            })
-        }).then((response) => console.log(response))
-    }
-
-
-    function removeSession () {
-
-        fetch("/Session/removeSession.do" , {
-            method: "Post",
-            cache: "no-cache",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-
-            })
-        }).then((response) => console.log(response))
+            body: JSON.stringify({})
+        }).then((response) => response.json())
+            .then((data)=>{
+                console.log('then');
+                console.log(data);
+            }).catch((error)=> console.log(error));
     }
 
 
