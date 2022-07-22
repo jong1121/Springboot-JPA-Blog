@@ -2,7 +2,7 @@ package com.example.blog.test;
 
 import com.example.blog.model.RoleType;
 import com.example.blog.model.UserM;
-import com.example.blog.repository.UserRepository;
+import com.example.blog.repository.UserMRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,13 +17,13 @@ import java.util.List;
 public class DummyControllerTest {
 
     @Autowired  //의존성 주입  DI
-    private UserRepository userRepository;
+    private UserMRepository userMRepository;
 
     @DeleteMapping("/dummy/user/{id}")
     public String delete(@PathVariable int id){
 
         try {
-            userRepository.deleteById(id);
+            userMRepository.deleteById(id);
         } catch (Exception e) {
             return "삭제에 실패하였습니다 해당 ID는 DB에 없습니다";
         }
@@ -39,7 +39,7 @@ public class DummyControllerTest {
         System.out.println("email:" + requestUserM.getEmail());
 
         // user 가져올때 영속화 (영속성 컨텍스트)
-        UserM userM = userRepository.findById(id).orElseThrow(() ->{
+        UserM userM = userMRepository.findById(id).orElseThrow(() ->{
             return new IllegalArgumentException("수정에 실패하였습니다.");
         });
         userM.setPassword(requestUserM.getPassword());
@@ -52,12 +52,12 @@ public class DummyControllerTest {
     }
     @GetMapping("/dummy/user")
     public List<UserM> list() {
-        return userRepository.findAll();
+        return userMRepository.findAll();
     }
 
     @GetMapping("/dummy/users")
     public List<UserM> pageList(@PageableDefault(size=2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable ){
-        Page <UserM> pasingUsers = userRepository.findAll(pageable);
+        Page <UserM> pasingUsers = userMRepository.findAll(pageable);
 
         List<UserM> userMS = pasingUsers.getContent();
         return userMS;
@@ -66,7 +66,7 @@ public class DummyControllerTest {
     @GetMapping("/dummy/user/{id}")
     public UserM detail(@PathVariable int id) {
 // 람타식
-        UserM userM = userRepository.findById(id).orElseThrow(() -> {
+        UserM userM = userMRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("해당 사용자가 없습니다.");
         });
 
@@ -88,7 +88,7 @@ public class DummyControllerTest {
                 +"create:"+ userM.getCreateDate());
 
         userM.setRole(RoleType.USER);
-        userRepository.save(userM);
+        userMRepository.save(userM);
         return "회원가입이 완료되었습니다.";
     }
 }

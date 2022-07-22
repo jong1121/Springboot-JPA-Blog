@@ -35,7 +35,7 @@ let index = {
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data)  // http body data
         })
             .then((response) => response.json())
             .then((data) => {
