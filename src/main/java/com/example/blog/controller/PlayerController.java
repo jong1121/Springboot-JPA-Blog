@@ -4,16 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class UserController {
-    @GetMapping("/user/joinForm")
+public class PlayerController {
+    @GetMapping("/player/joinForm")
     public String joinForm() {
 
-        return "user/joinForm";
+        return "player/joinForm";
     }
 
-    @GetMapping("/user/loginForm")
+    @GetMapping("/player/loginForm")
     public String loginForm(){
 
-        return "user/loginForm";
+        return "player/loginForm";
     }
 }

@@ -6,9 +6,9 @@ let index = {
     },
 
     save: function () {
-        //   alert('user의 save함수 호출됨');
+        //   alert('player save함수 호출됨');
         let data = {
-            username: $('#username').val(),
+            playername: $('#playername').val(),
             password: $('#password').val(),
             email: $('#email').val()
         };
@@ -17,7 +17,7 @@ let index = {
         /*
         $.ajax({
             type: "POST",
-            url: "/api/user",
+            url: "/api/player",
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8", //body 데이터 타입
             dataType: "json" // 응답 데이터 타입
@@ -29,7 +29,7 @@ let index = {
             alert(JSON.stringify(error));
         });*/
 
-        fetch("/api/user", {
+        fetch("/api/player", {
             method: "Post",
             cache: "no-cache",
             headers: {

@@ -6,8 +6,8 @@
 <div class="container">
   <form action="/action_page.php">
     <div class="form-group">
-      <label for="username">username:</label>
-      <input type="text" class="form-control" placeholder="Enter username" id="username">
+      <label for="playername">playername:</label>
+      <input type="text" class="form-control" placeholder="Enter playername" id="playername">
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>

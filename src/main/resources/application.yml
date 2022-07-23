@@ -14,10 +14,10 @@ spring:
       suffix: .jsp
 
   datasource:
-    driver-class-name: com.tmax.tibero.jdbc.TbDriver
-    url: jdbc:tibero:thin:@localhost:8629:tibero
-    username: USER1
-    password: USER1!
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: user1
+    password: user1!
 
   jpa:
     open-in-view: true
@@ -29,7 +29,7 @@ spring:
     show-sql: true
     properties:
       hibernate.format_sql: true   # 쿼리문 포맷
-      hibernate.dialect: org.hibernate.dialect.Oracle10gDialect
+#      hibernate.dialect: org.hibernate.dialect.Oracle10gDialect
 
   jackson:
     serialization:

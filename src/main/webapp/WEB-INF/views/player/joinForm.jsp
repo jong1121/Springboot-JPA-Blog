@@ -6,8 +6,8 @@
 <div class="container">
     <form>
         <div class="form-group">
-            <label for="username">username:</label>
-            <input type="text" class="form-control" placeholder="Enter username" id="username">
+            <label for="playername">playername:</label>
+            <input type="text" class="form-control" placeholder="Enter playername" id="playername">
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
@@ -26,6 +26,6 @@
     <button id="btn-save" class="btn btn-primary">회원가입완료</button>
 </div>
 
-<script src="/js/userM.js"></script>
+<script src="/js/player.js"></script>
 <%@include file="../layout/footer.jsp" %>
 

@@ -38,8 +38,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	//implementation files('libs/tibero6-jdbc-14.jar')
-	runtimeOnly files('libs/tibero6-jdbc-14.jar')
+	//runtimeOnly files('libs/tibero6-jdbc-14.jar')
+	runtimeOnly 'org.postgresql:postgresql'
 
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
