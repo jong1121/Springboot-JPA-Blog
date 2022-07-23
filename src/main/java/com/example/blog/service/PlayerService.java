@@ -20,10 +20,15 @@ public class PlayerService {
             return 1;
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("PlayerService:회원가입():" + e.getMessage());
+            System.out.println("PlayerService=>" + e.getMessage());
         }
 
         return -1;
 
+    }
+
+    @Transactional(readOnly = true)  // Select할 때 트랜잭션 시작, 서비스 종료시에 트랜잭션 종료(정합성)
+    public Player 로그인(Player player) {
+       return playerRepository.login(player.getPlayername(),player.getPassword());
     }
 }

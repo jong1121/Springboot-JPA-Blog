@@ -1,6 +1,7 @@
 package com.example.blog.controller;
 
 import com.example.blog.dto.ResponseDto;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 
+@Log4j2
 @Controller
 public class SessionController {
 
