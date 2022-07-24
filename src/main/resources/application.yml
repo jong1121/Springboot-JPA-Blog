@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 80
   servlet:
     context-path: /
     encoding:
@@ -22,7 +22,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: update  #create 프로젝트실행시 무조건 신규 생성, update 추 가
+      ddl-auto: update  #create 프로젝트실행시 무조건 신규 생성, update 추가
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  #엔티티 생성시 변수명 그대로
       use-new-id-generator-mappings: false  #jpa 넘버링 전략 미준수
@@ -35,4 +35,10 @@ spring:
     serialization:
       fail-on-empty-beans: false
 
-
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace   # 쿼리 파라미터를 로그로 출력함

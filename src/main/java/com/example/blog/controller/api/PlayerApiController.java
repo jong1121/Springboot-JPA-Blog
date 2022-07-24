@@ -6,6 +6,7 @@ import com.example.blog.model.RoleType;
 import com.example.blog.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,28 +18,20 @@ public class PlayerApiController {
 
     @Autowired
     private PlayerService playerService;
-    @Autowired
-    private HttpSession session;
 
-    @PostMapping("/api/player")
+
+    @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody Player player) {
 
-        player.setRole(RoleType.PLAYER);
-        int result = playerService.회원가입(player);
-        return new ResponseDto<Integer>(HttpStatus.OK, result);
+
+        System.out.println("PlayerApiController:save 호출1");
+         playerService.회원가입(player);
+        System.out.println("PlayerApiController:save 호출2");
+        return new ResponseDto<Integer>(HttpStatus.OK, 1);
 
 
     }
 
-    @PostMapping("/api/player/login")
-    public ResponseDto<Integer> login(@RequestBody Player player)  {
-        int result = -1;
-        Player principal = playerService.로그인(player);  // 접근주체
-        if ( principal != null){
-            session.setAttribute("principal",principal);
-            result = 1;
-        }
-        return new ResponseDto<Integer>(HttpStatus.OK,result);
-    }
+
 
 }
