@@ -9,9 +9,7 @@ import com.example.blog.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BoardApiController {
@@ -25,10 +23,13 @@ public class BoardApiController {
         //System.out.println(board.getContent());
         boardService.글쓰기(board , principal.getPlayer());
         return new ResponseDto<Integer>(HttpStatus.OK, 1);
-
-
     }
 
+    @DeleteMapping("/api/board/{id}")
+    public ResponseDto<Integer> deleteById(@PathVariable int id){
+        boardService.글삭제하기(id);
+        return new ResponseDto<Integer>(HttpStatus.OK, 1);
+    }
 
 
 }

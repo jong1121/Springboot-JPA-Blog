@@ -15,6 +15,8 @@
     </div>
 
     <button type="submit" class="btn btn-primary">로그인</button>
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=${clientKey}&redirect_uri=http://58.77.93.16/auth/kakao/callback&response_type=code">
+      카카오 로그인</a>
   </form>
 
 </div>
